@@ -34,14 +34,17 @@ class Clicker:
             with keyboard.pressed(key.alt):
                 keyboard.press(key.tab)
                 keyboard.release(key.tab)
+                time.sleep(0.1)
                 keyboard.press(key.tab)
                 keyboard.release(key.tab)
         elif text=="%{TAB 3}":
             with keyboard.pressed(key.alt):
                 keyboard.press(key.tab)
                 keyboard.release(key.tab)
+                time.sleep(0.1)
                 keyboard.press(key.tab)
                 keyboard.release(key.tab)
+                time.sleep(0.1)
                 keyboard.press(key.tab)
                 keyboard.release(key.tab)
         elif text=="%T":
