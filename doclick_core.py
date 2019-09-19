@@ -33,6 +33,11 @@ class Clicker:
         elif text=="%T":
             with keyboard.pressed(key.alt):
                 keyboard.type("T")
+                
+        elif text=="{F5}":
+            with keyboard.pressed(key.alt):
+                keyboard.press(key.f5)
+                keyboard.release(key.f5)
             
         else:
             keyboard.type(text)
