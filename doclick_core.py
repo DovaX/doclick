@@ -35,13 +35,13 @@ class Clicker:
                 keyboard.type("T")
                 
         elif text=="{F5}":
-            with keyboard.pressed(key.alt):
-                keyboard.press(key.f5)
-                keyboard.release(key.f5)
+            #with keyboard.pressed(key.alt):
+            keyboard.press(key.f5)
+            keyboard.release(key.f5)
         elif text=="{ENTER}":
-            with keyboard.pressed(key.alt):
-                keyboard.press(key.enter)
-                keyboard.release(key.enter)
+            #with keyboard.pressed(key.alt):
+            keyboard.press(key.enter)
+            keyboard.release(key.enter)
          
             
             
