@@ -30,6 +30,12 @@ class Clicker:
             with keyboard.pressed(key.alt):
                 keyboard.press(key.tab)
                 keyboard.release(key.tab)
+        elif text=="%{TAB 2}":
+            with keyboard.pressed(key.alt):
+                keyboard.press(key.tab)
+                keyboard.release(key.tab)
+                keyboard.press(key.tab)
+                keyboard.release(key.tab)
         elif text=="%{TAB 3}":
             with keyboard.pressed(key.alt):
                 keyboard.press(key.tab)
