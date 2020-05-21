@@ -32,3 +32,24 @@ def get_col_pixels(pix,x,y_size):
     return(col_pixels)
     
 
+
+def get_pattern(subimg,subimg_x):
+    subpix=subimg.load()
+    sub_y_size=subimg.size[1]
+    column=get_col_pixels(subpix,subimg_x,sub_y_size)
+    red_column=project_rgb(column)
+    pattern=str(red_column)[1:-1]    
+    return(pattern)
+
+def get_template(img):
+
+    pix=img.load()
+    y_size=img.size[1]
+    all_pixels_data=[]
+    for x in range(img.size[0]):
+        column=get_col_pixels(pix,x,y_size)
+        red_template_col=project_rgb(column)
+        all_pixels_data.append(red_template_col)
+    return(all_pixels_data)
+
+
