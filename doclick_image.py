@@ -19,3 +19,16 @@ def save_img(img,filename):
 
 
 
+def project_rgb(inp,rgb=0):
+    "rgb parameter ... 0 ~ R, 1 ~ G, 2 ~ B"
+    if isinstance(inp,tuple):
+        return(inp[0])
+    if isinstance(inp,list):
+        return([x[0] for x in inp])
+        
+    
+def get_col_pixels(pix,x,y_size):
+    col_pixels=[pix[x,i] for i in range(y_size)]
+    return(col_pixels)
+    
+
