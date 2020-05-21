@@ -53,3 +53,32 @@ def get_template(img):
     return(all_pixels_data)
 
 
+    
+def get_matching_columns(all_pixels_data,size_x,subimg,subimg_x,threshold=100):
+    #Threshold ~ max number of subimg occurences
+    pattern=get_pattern(subimg,subimg_x)    
+    
+    matching_cols=[] 
+    
+    for x in range(size_x):
+        red_template_col=all_pixels_data[x]
+        if pattern in str(red_template_col):
+            first_part=str(red_template_col).split(pattern)[0]
+            y=first_part.count(",")
+            matching_cols.append([x,y])
+    if len(matching_cols)>threshold:
+        return([])
+    else:
+        print("Pattern found in coordinates:",matching_cols)
+    return(matching_cols)
+
+
+def get_division(subimg,division_points=10):
+    subimg_size_x=subimg.size[0]
+    
+    if division_points==0:
+        division=list(range(subimg_size_x))
+    else:
+        division=list(range(0,subimg_size_x,subimg_size_x//division_points))   
+    return(division)        
+
