@@ -82,3 +82,31 @@ def get_division(subimg,division_points=10):
         division=list(range(0,subimg_size_x,subimg_size_x//division_points))   
     return(division)        
 
+
+def detect_subimg(img,subimg):
+    #compares only one colour
+
+    division=get_division(subimg)
+    basis_points_dict={}
+    counter=0
+    all_pixels_data=get_template(img)
+    
+    for i in range(len(division)):
+        matching_cols=get_matching_columns(all_pixels_data,img.size[0],subimg,division[i])
+        basis_points=[(coor[0]-division[i],coor[1]) for coor in matching_cols]
+        
+        for point in basis_points:
+            if point in basis_points_dict.keys():
+                basis_points_dict[point]+=1
+            else:
+                basis_points_dict[point]=1
+        if len(matching_cols)>0:
+            counter+=1
+    
+    true_points=[]
+    for k,v in basis_points_dict.items():
+        if v==counter:
+            true_points.append(k)
+    
+    return(true_points)
+            
