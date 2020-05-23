@@ -120,8 +120,8 @@ def execute_order(order):
         execute_script(script)
         
     elif "Screenshot" in order:
-        doclick_image.take_screenshot()
-        
+        img=doclick_image.take_screenshot()
+        doclick_image.save_img(img,"screenshot.png")        
     
 
 execute_script("script.txt")
