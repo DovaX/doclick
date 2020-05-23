@@ -2,6 +2,7 @@ import pynput.mouse
 import pynput.keyboard
 import time
 import datetime
+import doclick_image
 
 
 mouse = pynput.mouse.Controller()
@@ -117,5 +118,10 @@ def execute_order(order):
     elif "Call" in order:
         script=order[:-1].replace("Call(","")        
         execute_script(script)
+        
+    elif "Screenshot" in order:
+        doclick_image.take_screenshot()
+        
+    
 
 execute_script("script.txt")
