@@ -121,7 +121,10 @@ def execute_order(order):
         
     elif "Screenshot" in order:
         img=doclick_image.take_screenshot()
-        doclick_image.save_img(img,"screenshot.png")        
-    
+        doclick_image.save_img(img,"screenshot.png") 
+        
+    elif "GetPixel" in order:
+        pixel=doclick_image.get_pixel()
+        
 
 execute_script("script.txt")
