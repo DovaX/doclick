@@ -79,6 +79,39 @@ class Clicker:
             keyboard.press(key.alt)
         elif key=='shift':
             keyboard.press(key.shift)
+            
+    def condition_subimage(self,sub_img):
+        """"""        
+            
+        main_img=doclick_image.take_screenshot()
+        detected_img_coor_list=doclick_image.detect_subimg(main_img,sub_img)
+        if len(detected_img_coor_list)>0:
+            print(detected_img_coor_list)
+            return(True)
+        else:
+            return(False)
+        
+    def wait_until_satisfied(self,sub_img_path):
+        done = False
+        
+        while not done:
+            #print("A")
+            img=doclick_image.load_img(sub_img_path)
+            #print(self.condition_subimage(img)) 
+            if self.condition_subimage(img):
+                done=True
+                print("done=True")
+        
+    def wait_until_not_satisfied(self,sub_img_path):
+        done = False
+        
+        while not done:
+            print("B")
+            img=doclick_image.load_img(sub_img_path)
+            
+            if not self.condition_subimage(img):
+                done=True
+                print("done=True")
 
     def wait(self,milliseconds):
         time.sleep(milliseconds/1000)
@@ -119,12 +152,29 @@ def execute_order(order):
         script=order[:-1].replace("Call(","")        
         execute_script(script)
         
+    ###### IMAGE #######
     elif "Screenshot" in order:
         img=doclick_image.take_screenshot()
         doclick_image.save_img(img,"screenshot.png") 
         
     elif "GetPixel" in order:
-        pixel=doclick_image.get_pixel()
+        img=doclick_image.load_img("screenshot.png") 
+        x,y=(200,200)
+        pixel=doclick_image.get_pixel(img,x,y)
+        print(pixel)
+        
+    elif "RepeatUntilSubimage" in order:
+        path=order[:-1].replace("RepeatUntilSubimage(","")
+        c.wait_until_satisfied(path)
+        
+    elif "RepeatUntilNotSubimage" in order:
+        path=order[:-1].replace("RepeatUntilNotSubimage(","")
+        c.wait_until_not_satisfied(path)
+    
+    elif "Print" in order:
+        text=order[:-1].replace("Print(","")
+        print(text)
+        
         
 
 execute_script("script.txt")
