@@ -1,0 +1,6 @@
+WriteTime()
+Wait(3000)
+Write({ENTER})
+Wait(2000)
+RepeatUntilNotSubimage(raal_img2.png)
+Wait(2000)

@@ -1,0 +1,8 @@
+Call(raal_part1.txt)
+Wait(2000)
+RepeatUntilNotSubimage(raal_img3.png)
+Wait(2000)
+Write({ENTER})
+Wait(6000)
+Write(long_PP_)
+Call(raal_part2.txt)
