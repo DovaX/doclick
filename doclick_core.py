@@ -80,8 +80,7 @@ class Clicker:
         elif key=='shift':
             keyboard.press(key.shift)
             
-    def condition_subimage(self,sub_img):
-        """"""        
+    def condition_subimage(self,sub_img):      
             
         main_img=doclick_image.take_screenshot()
         detected_img_coor_list=doclick_image.detect_subimg(main_img,sub_img)
@@ -90,6 +89,26 @@ class Clicker:
             return(True)
         else:
             return(False)
+        
+    def condition_day_time(self,opening_time,closing_time):
+        """Enable scheduling of work only in day time
+        inputs: opening time and closing time in hours (int)"""
+        hours=int(datetime.datetime.now().strftime("%H"))
+        if hours>=opening_time and hours<closing_time:
+            return(True)
+        else:
+            return(False)
+        
+    def wait_until_satisfied_day_time(self):
+        done = False
+        while not done:
+            time.sleep(30)
+            if self.condition_day_time(5,22):
+                done=True
+                print("done=True")
+            else:
+                print("Script not active")
+        
         
     def wait_until_satisfied(self,sub_img_path):
         done = False
@@ -163,6 +182,9 @@ def execute_order(order):
         pixel=doclick_image.get_pixel(img,x,y)
         print(pixel)
         
+    elif "RepeatInDayTime" in order:
+        c.wait_until_satisfied_day_time()
+    
     elif "RepeatUntilSubimage" in order:
         path=order[:-1].replace("RepeatUntilSubimage(","")
         c.wait_until_satisfied(path)
@@ -176,5 +198,4 @@ def execute_order(order):
         print(text)
         
         
-
 execute_script("script.txt")
