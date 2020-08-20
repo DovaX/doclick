@@ -55,6 +55,10 @@ class Clicker:
         elif text=="{DOWN}":
             keyboard.press(key.down)
             keyboard.release(key.down)
+
+        elif text=="{ESC}":
+            keyboard.press(key.esc)
+            keyboard.release(key.esc)
                 
         elif text=="{F5}":
             #with keyboard.pressed(key.alt):
