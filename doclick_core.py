@@ -52,6 +52,10 @@ class Clicker:
             with keyboard.pressed(key.alt):
                 keyboard.type("T")
                 
+        elif text=="{DOWN}":
+            keyboard.press(key.down)
+            keyboard.release(key.down)
+                
         elif text=="{F5}":
             #with keyboard.pressed(key.alt):
             keyboard.press(key.f5)
