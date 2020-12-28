@@ -205,5 +205,5 @@ def execute_order(order):
         text=order[:-1].replace("Print(","")
         print(text)
         
-        
-execute_script("script.txt")
+if __name__=='__main__':        
+    execute_script("script.txt")

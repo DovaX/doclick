@@ -1,6 +1,0 @@
-Call(raal_part1.txt)
-Wait(15000)
-Write({ENTER})
-Wait(6000)
-Write(VV_)
-Call(raal_part2.txt)

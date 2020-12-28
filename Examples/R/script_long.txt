@@ -1,5 +1,0 @@
-Call(raal_vv1.txt)
-Call(raal_pp2.txt)
-Call(raal_vv1_long.txt)
-Call(raal_pp1_long.txt)
-Call(raal_repeat_script.txt)
