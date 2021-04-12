@@ -2,7 +2,7 @@ import pynput.mouse
 import pynput.keyboard
 import time
 import datetime
-import doclick_image
+import doclick.doclick_image as dci
 
 
 mouse = pynput.mouse.Controller()
@@ -90,8 +90,8 @@ class Clicker:
             
     def condition_subimage(self,sub_img):      
             
-        main_img=doclick_image.take_screenshot()
-        detected_img_coor_list=doclick_image.detect_subimg(main_img,sub_img)
+        main_img=dci.take_screenshot()
+        detected_img_coor_list=dci.detect_subimg(main_img,sub_img)
         if len(detected_img_coor_list)>0:
             print(detected_img_coor_list)
             return(True)
@@ -123,7 +123,7 @@ class Clicker:
         
         while not done:
             #print("A")
-            img=doclick_image.load_img(sub_img_path)
+            img=dci.load_img(sub_img_path)
             #print(self.condition_subimage(img)) 
             if self.condition_subimage(img):
                 done=True
@@ -134,7 +134,7 @@ class Clicker:
         
         while not done:
             print("B")
-            img=doclick_image.load_img(sub_img_path)
+            img=dci.load_img(sub_img_path)
             
             if not self.condition_subimage(img):
                 done=True
@@ -181,13 +181,13 @@ def execute_order(order):
         
     ###### IMAGE #######
     elif "Screenshot" in order:
-        img=doclick_image.take_screenshot()
-        doclick_image.save_img(img,"screenshot.png") 
+        img=dci.take_screenshot()
+        dci.save_img(img,"screenshot.png") 
         
     elif "GetPixel" in order:
-        img=doclick_image.load_img("screenshot.png") 
+        img=dci.load_img("screenshot.png") 
         x,y=(200,200)
-        pixel=doclick_image.get_pixel(img,x,y)
+        pixel=dci.get_pixel(img,x,y)
         print(pixel)
         
     elif "RepeatInDayTime" in order:
